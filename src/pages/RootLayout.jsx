@@ -7,10 +7,6 @@ export default function RootLayout() {
         <Link to="/" className="logo">
           React Stock
         </Link>
-        <nav>
-          <Link to="/">Início</Link>
-          <Link to="items">Items</Link>
-        </nav>
       </header>
       <div>
         <Outlet />

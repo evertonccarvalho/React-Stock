@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useStock from "../hooks/useStock";
-export default function Home() {
+import Nav from "../components/Nav";
+export default function DashBoard() {
   const { items } = useStock();
 
   const diversity = items.length;
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <main>
       <h1>Dashboard</h1>
+      <Nav />
       <div className="row">
         <div className="dashboard-card">
           Diversidade de itens
