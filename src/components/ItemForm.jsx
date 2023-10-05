@@ -17,7 +17,7 @@ export default function ItemForm({ itemToUpdate }) {
   };
 
   const [item, setItem] = useState(itemToUpdate ? itemToUpdate : defaultItem);
-  const { addItem } = useStock();
+  const { addItem, updateItem } = useStock();
   const inputRef = useRef(null);
 
   const handleChange = (ev) => {
@@ -33,13 +33,19 @@ export default function ItemForm({ itemToUpdate }) {
     ev.preventDefault();
 
     try {
-      const validItem = new StockItem(item);
-      addItem(validItem);
-      alert("item Cadastrado com sucesso!");
-      setItem(defaultItem);
-      inputRef.current.focus();
+      if (itemToUpdate) {
+        updateItem(itemToUpdate.id, item);
+        alert("item Atualizado com Sucesso!");
+      } else {
+        const validItem = new StockItem(item);
+        addItem(validItem);
+        alert("item Cadastrado com sucesso!");
+        setItem(defaultItem);
+      }
     } catch (err) {
       console.log(err.message);
+    } finally {
+      inputRef.current.focus();
     }
   };
 
